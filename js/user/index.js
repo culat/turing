@@ -3,7 +3,6 @@ var MyKey='ae8b68b6e7164229a53ea7a258d78b54';
 var MyUserId='主人1';
 var Turing='灵米酱';
 var User='主人';
-var myDate=new Date();
 //自定函数
 function PostTuring(key,info,userid){
 	var turl='http://www.tuling123.com/openapi/api';
@@ -14,6 +13,7 @@ function PostTuring(key,info,userid){
 	  userid:userid
 	},
 	function(data){
+		var myDate=new Date();
 		if(data.url){
 			AddTableLine(Turing,data.text,myDate.toLocaleString());
 			AddTableLine(Turing,data.url,myDate.toLocaleString());
@@ -37,10 +37,12 @@ function ScrollToEnd(){//滚动到底部
 }
 //自动事件
 window.onload = function(){
+	var myDate=new Date();
 	AddTableLine(Turing,'你好，我是灵米酱，初次见面，请多多指教。',myDate.toLocaleString());
 }
 //控件事件
 $('#button_submit').click(function(){
+	var myDate=new Date();
 	AddTableLine(User,$('#input_text').val(),myDate.toLocaleString());
 	PostTuring(MyKey,$('#input_text').val(),MyUserId);
 	$('#input_text').val(null);
